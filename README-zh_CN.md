@@ -7,6 +7,7 @@ TWRP device tree for Qibao W701 codename“w701”
 ## `正弄着呢`
 
 ## 设备图片
+![Qihoo Kids watch 6s](https://github.com/mediateeee/twrp_device_qibao_w701/raw/main/image.jpg)
 
 ## 设备规格
 
