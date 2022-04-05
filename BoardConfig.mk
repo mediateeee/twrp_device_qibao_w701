@@ -18,9 +18,6 @@
 
 DEVICE_PATH := device/qibao/w701
 
-# For building with minimal manifest
-ALLOW_MISSING_DEPENDENCIES := true
-
 # Architecture
 TARGET_ARCH := arm
 TARGET_NO_BOOTLOADER := true
@@ -36,10 +33,7 @@ TARGET_OTA_ASSERT_DEVICE := w701
 
 # File systems
 BOARD_HAS_LARGE_FILESYSTEM := true
-#BOARD_RECOVERYIMAGE_PARTITION_SIZE := 20971520 # This is the maximum known partition size, but it can be higher, so we just omit it
-BOARD_SYSTEMIMAGE_PARTITION_TYPE := ext4
-BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := ext4
-BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
+# BOARD_RECOVERYIMAGE_PARTITION_SIZE := 20971520 # This is the maximum known partition size, but it can be higher, so we just omit it
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 TARGET_COPY_OUT_VENDOR := vendor
@@ -53,10 +47,11 @@ BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
 
 # TWRP Configuration
 BOARD_HAS_NO_SELECT_BUTTON := true
-TW_THEME := watch_hdpi
+TW_THEME := watch_mdpi
 TW_EXTRA_LANGUAGES := true
 TW_SCREEN_BLANK_ON_BOOT := true
 TW_NO_USB_STORAGE := true
+# DEVICE_RESOLUTION := 240x240
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_USE_TOOLBOX := true
 RECOVERY_SDCARD_ON_DATA := true
