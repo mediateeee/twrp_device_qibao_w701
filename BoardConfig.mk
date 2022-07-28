@@ -26,7 +26,8 @@ TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_SMP := true
-TARGET_CPU_VARIANT := generic
+TARGET_CPU_VARIANT := cortex-a7
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno304
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := w701
@@ -36,23 +37,27 @@ BOARD_HAS_LARGE_FILESYSTEM := true
 # BOARD_RECOVERYIMAGE_PARTITION_SIZE := 20971520 # This is the maximum known partition size, but it can be higher, so we just omit it
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
-TARGET_COPY_OUT_VENDOR := vendor
+TARGET_COPY_OUT_VENDOR := system/vendor
 
 # Kernel
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 earlyprintk buildvariant=user
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/zImage-dtb
+BOARD_RAMDISK_OFFSET := 0x01000000
+BOARD_KERNEL_TAGS_OFFSET := 0x00000100
+BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 2048
-BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
-BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
 
 # TWRP Configuration
 BOARD_HAS_NO_SELECT_BUTTON := true
+BOARD_HAS_NO_REAL_SDCARD := true
 TW_THEME := watch_mdpi
 TW_EXTRA_LANGUAGES := true
 TW_SCREEN_BLANK_ON_BOOT := true
+TARGET_RECOVERY_QCOM_RTC_FIX := true
 TW_NO_USB_STORAGE := true
-# DEVICE_RESOLUTION := 240x240
+TW_IGNORE_MISC_WIPE_DATA := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
-TW_USE_TOOLBOX := true
-RECOVERY_SDCARD_ON_DATA := true
+# TW_USE_TOOLBOX := true
 TW_INCLUDE_CRYPTO := true
+RECOVERY_SDCARD_ON_DATA := true
+# DEVICE_RESOLUTION := 240x240
